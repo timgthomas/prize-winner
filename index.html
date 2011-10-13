@@ -7,13 +7,13 @@
 	<title>Prize Winner</title>
 </head>
 
-<body>
+<body id=prize-winner>
 	<h1>Prize Winner</h1>
 	<p>
-		<input placeholder=name>
-		<a href=#>Add</a>
+		<input placeholder=name id=attendee-name>
+		<a href=# id=add-attendee>Add</a>
 	</p>
-	<ul>
+	<ul id=attendee-list>
 		<li>Cheyenne
 		<li>Tim
 		<li>Colin
@@ -22,6 +22,15 @@
 	<footer>
 		<p>Hand-crafted by <a href=http://timgthomas.com/>Tim G. Thomas</a>.</p>
 	</footer>
+	
+	<script type="text/template" id="attendee-template">
+		<%= name %>
+	</script>
+	
+	<script src=jquery-1.6.4.min.js></script>
+	<script src=underscore-min.js></script>
+	<script src=backbone-min.js></script>
+	<script src=app.js></script>
 </body>
 
 </html>
