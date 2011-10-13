@@ -4,7 +4,16 @@
 	
 	// Models
 	var Attendee = Backbone.Model.extend({});
-	var AttendeeList = Backbone.Collection.extend({ model : Attendee });
+	var AttendeeList = Backbone.Collection.extend({
+	
+		model : Attendee,
+	
+		random : function() {
+			var randValue = Math.floor(Math.random() * this.length);
+			return this.models[randValue];
+		}
+	
+	});
 	
 	// Views
 	var AttendeeView = Backbone.View.extend({
@@ -41,7 +50,8 @@
 		el : $('#prize-winner'),
 		
 		events : {
-			'click #add-attendee' : 'createOnEnter'
+			'click #add-attendee' : 'createOnEnter',
+			'click #random-attendee' : 'random'
 		},
 		
 		initialize : function() {
@@ -55,12 +65,16 @@
 			this.$('#attendee-list').prepend(view.render().el);
 		},
 		
-		createOnEnter: function(e) {
+		createOnEnter : function(e) {
 			var text = this.input.val();
 			if (text) {
 				this.collection.add(new Attendee({ name : text }));
 				this.input.val('');
 			}
+		 },
+		 
+		 random : function() {
+			alert('Random winner: ' + this.collection.random().get('name'));
 		 }
 		 
 	});
