@@ -13,11 +13,25 @@
 		
 		template : _.template($('#attendee-template').html()),
 		
-		events : {},
+		events : {
+			'click span.delete' : 'clear'
+		},
+		
+		initialize : function() {
+			this.model.bind('destroy', this.remove, this);
+		},
 		
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
 			return this;
+		},
+		
+		remove : function() {
+			$(this.el).remove();
+		},
+		
+		clear : function() {
+			this.model.destroy();
 		}
 		
 	});
