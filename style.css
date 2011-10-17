@@ -1,0 +1,38 @@
+/* Base Styles */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header, #content, footer {
+	margin: 15px auto;
+	width: 300px;
+}
+
+/* Layout Styles */
+.l-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+	.l-list > li {
+		display: block;
+	}
+
+/* Module Styles */
+.atnd {
+	
+}
+	.atnd-name {
+		height: 24px;
+		line-height: 24px;
+	}
+	.atnd-delete {
+		cursor: pointer;
+		display: inline-block;
+		float: right;
+		height: 24px;
+		width: 24px;
+	}
+
+/* State Styles */

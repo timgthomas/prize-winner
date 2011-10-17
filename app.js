@@ -50,7 +50,8 @@
 		el : $('#prize-winner'),
 		
 		events : {
-			'click #add-attendee' : 'createOnEnter',
+			'click #add-attendee' : 'createOnClick',
+			'keyup #attendee-name' : 'createOnEnter',
 			'click #random-attendee' : 'random'
 		},
 		
@@ -58,6 +59,8 @@
 			this.input = this.$('#attendee-name');
 			this.collection = new AttendeeList();
 			this.collection.bind('add', this.addAttendee, this);
+			
+			this.input.focus();
 		},
 		
 		addAttendee : function(attendee) {
@@ -65,7 +68,16 @@
 			this.$('#attendee-list').prepend(view.render().el);
 		},
 		
+		createOnClick : function() {
+			this.createAttendee();
+		 },
+		
 		createOnEnter : function(e) {
+			if (e.keyCode !== 13) return;
+			this.createAttendee();
+		 },
+		 
+		 createAttendee : function() {
 			var text = this.input.val();
 			if (text) {
 				this.collection.add(new Attendee({ name : text }));
