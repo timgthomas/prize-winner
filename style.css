@@ -35,4 +35,17 @@ header, #content, footer {
 		width: 24px;
 	}
 
+.frm {}
+
+	.frm-input {}
+	.frm-add {}
+
 /* State Styles */
+#content.choose .frm-input,
+#content.choose .frm-add,
+#content.choose .atnd-delete {
+	display: none;
+}
+#content.edit .frm-random {
+	display: none;
+}

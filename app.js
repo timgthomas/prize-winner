@@ -9,6 +9,7 @@
 		model : Attendee,
 	
 		random : function() {
+			if (this.length === 0) return undefined;
 			var randValue = Math.floor(Math.random() * this.length);
 			return this.models[randValue];
 		}
@@ -86,7 +87,12 @@
 		 },
 		 
 		 random : function() {
-			alert('Random winner: ' + this.collection.random().get('name'));
+			var rnd = this.collection.random();
+			if (rnd === undefined) {
+				alert('No attendees listed');
+			} else {
+				alert('Random winner: ' + rnd.get('name'));
+			}
 		 }
 		 
 	});
