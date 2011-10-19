@@ -13,12 +13,12 @@
 	<header>
 		<h1>Prize Winner</h1>
 	</header>
-	<div id=content class=edit>
+	<div id=content>
 		<p class=frm>
-			<a href='' id=mode-switch>S</a>
+			<a href='' id=mode-switch class='icon frm-switch'>Switch Mode</a>
 			<input id=attendee-name class=frm-input maxlength=16 placeholder=name>
-			<a href=# id=add-attendee class=frm-add>Add</a>
-			<a href=# id=random-attendee class=frm-random>Random</a>
+			<a href='' id=add-attendee class='icon frm-add'>Add Attendee</a>
+			<a href='' id=random-attendee class='icon frm-random'>Choose Winner</a>
 		</p>
 		<ul class=l-list id=attendee-list></ul>
 	</div>
@@ -29,7 +29,7 @@
 	<script type='text/template' id=attendee-template>
 		<span class=atnd>
 			<span class=atnd-name><%= name %></span>
-			<span class='atnd-delete delete'>-</span>
+			<a href='' class='icon atnd-delete delete'>Remove</a>
 		</span>
 	</script>
 	
@@ -40,6 +40,7 @@
 	<script>
 	
 		(function($) {
+			$('#content').addClass('edit');
 			$('#mode-switch').click(function(e) {
 				e.preventDefault();
 				$('#content').toggleClass('choose').toggleClass('edit');

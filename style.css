@@ -17,28 +17,49 @@ header, #content, footer {
 }
 	.l-list > li {
 		display: block;
+		margin: 10px 0 0;
 	}
 
 /* Module Styles */
+.icon {
+	border: solid 1px #eee;
+	cursor: pointer;
+	display: inline-block;
+	text-indent: -9999px;
+	vertical-align: top;
+	height: 48px;
+	width: 48px;
+}
+	.icon:hover {
+		background-color: #eee;
+	}
+
 .atnd {
 	
 }
 	.atnd-name {
-		height: 24px;
-		line-height: 24px;
+		height: 50px;
+		line-height: 50px;
 	}
 	.atnd-delete {
-		cursor: pointer;
-		display: inline-block;
+		background-image: url(img/remove.png);
 		float: right;
-		height: 24px;
-		width: 24px;
 	}
 
-.frm {}
+.frm {
+	height: 50px;
+}
 
-	.frm-input {}
-	.frm-add {}
+	.frm-switch {}
+	.frm-input {
+		height: 48px;
+	}
+	.frm-add {
+		background-image: url(img/add.png);
+	}
+	.frm-random {
+		background-image: url(img/random.png);
+	}
 
 /* State Styles */
 #content.choose .frm-input,
@@ -46,6 +67,13 @@ header, #content, footer {
 #content.choose .atnd-delete {
 	display: none;
 }
+	#content.choose .frm-switch {
+		background-image: url(img/mode-edit.png);
+	}
+
 #content.edit .frm-random {
 	display: none;
 }
+	#content.edit .frm-switch {
+		background-image: url(img/mode-prize.png);
+	}
