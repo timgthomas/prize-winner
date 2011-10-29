@@ -24,7 +24,7 @@
 		template : _.template($('#attendee-template').html()),
 		
 		events : {
-			'click span.delete' : 'clear'
+			'click a.delete' : 'clear'
 		},
 		
 		initialize : function() {
@@ -91,9 +91,7 @@
 		 
 		 random : function() {
 			var rnd = this.collection.random();
-			if (rnd === undefined) {
-				alert('No attendees listed');
-			} else {
+			if (rnd !== undefined) {
 				this.$('#attendee-winner').html(rnd.get('name'));
 			}
 		 }
