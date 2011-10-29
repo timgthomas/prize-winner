@@ -15,10 +15,7 @@
 	</header>
 	<div id=content>
 		<p class=frm>
-			<a href='' id=mode-switch class='icon frm-switch'>Switch Mode</a>
-			<input id=attendee-name class=frm-input maxlength=16 placeholder=name>
-			<a href='' id=add-attendee class='icon frm-add'>Add Attendee</a>
-			<a href='' id=random-attendee class='icon frm-random'>Choose Winner</a>
+			<a href='' id=mode-switch class='icon frm-switch'>Switch Mode</a><input id=attendee-name class=frm-input maxlength=16 placeholder=name><a href=# id=add-attendee class='icon frm-add'>Add Attendee</a><span id=attendee-winner class=frm-output>(Winner)</span><a href=# id=random-attendee class='icon frm-random'>Choose Winner</a>
 		</p>
 		<ul class=l-list id=attendee-list></ul>
 	</div>
@@ -26,10 +23,10 @@
 		<p>Hand-crafted by <a href='http://timgthomas.com/'>Tim G. Thomas</a>.</p>
 	</footer>
 	
-	<script type='text/template' id=attendee-template>
+	<script type='text/template' id='attendee-template'>
 		<span class=atnd>
 			<span class=atnd-name><%= name %></span>
-			<a href='' class='icon atnd-delete delete'>Remove</a>
+			<a href=# class='icon atnd-delete delete'>Remove</a>
 		</span>
 	</script>
 	

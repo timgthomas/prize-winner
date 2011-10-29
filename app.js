@@ -61,6 +61,9 @@
 			this.collection = new AttendeeList();
 			this.collection.bind('add', this.addAttendee, this);
 			
+			this.collection.add(new Attendee({ name : 'Cheyenne' }));
+			this.collection.add(new Attendee({ name : 'Tim' }));
+			
 			this.input.focus();
 		},
 		
@@ -91,7 +94,7 @@
 			if (rnd === undefined) {
 				alert('No attendees listed');
 			} else {
-				alert('Random winner: ' + rnd.get('name'));
+				this.$('#attendee-winner').html(rnd.get('name'));
 			}
 		 }
 		 
