@@ -83,8 +83,7 @@
 			this.collection = new AttendeeList();
 			this.collection.bind('add', this.addAttendee, this);
 			
-			//this.collection.add(new Attendee({ name : 'Cheyenne' }));
-			//this.collection.add(new Attendee({ name : 'Tim' }));
+			//this.collection.add(new Attendee({ name : 'Foo' }));
 			
 			this.input.focus();
 		},
