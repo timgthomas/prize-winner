@@ -1,17 +1,38 @@
 (function($) {
 
-	Backbone.sync = function(method, model, success, error) {}
+	//sBackbone.sync = function(method, model, success, error) {}
 	
 	// Models
-	var Attendee = Backbone.Model.extend({});
+	var Attendee = Backbone.Model.extend({
+		defaults : {
+			"awarded" : false
+		},
+		award : function() {
+			this.set({ 'awarded' : true });
+		}
+	});
+	
 	var AttendeeList = Backbone.Collection.extend({
 	
 		model : Attendee,
 	
 		random : function() {
 			if (this.length === 0) return undefined;
-			var randValue = Math.floor(Math.random() * this.length);
-			return this.models[randValue];
+			
+			var unawarded = [];
+			
+			var len = this.models.length;
+			for (i = 0; i < len; i++) {
+				var m = this.models[i];
+				if (!m.get('awarded')) unawarded.push(m);
+			}
+			
+			var randValue = Math.floor(Math.random() * unawarded.length);
+			var result = unawarded[randValue];
+			if (result === undefined) return undefined;
+			
+			result.award();
+			return result;
 		}
 	
 	});
@@ -28,6 +49,7 @@
 		},
 		
 		initialize : function() {
+			this.model.bind('change', this.render, this);
 			this.model.bind('destroy', this.remove, this);
 		},
 		
@@ -61,8 +83,8 @@
 			this.collection = new AttendeeList();
 			this.collection.bind('add', this.addAttendee, this);
 			
-			this.collection.add(new Attendee({ name : 'Cheyenne' }));
-			this.collection.add(new Attendee({ name : 'Tim' }));
+			//this.collection.add(new Attendee({ name : 'Cheyenne' }));
+			//this.collection.add(new Attendee({ name : 'Tim' }));
 			
 			this.input.focus();
 		},
@@ -93,6 +115,8 @@
 			var rnd = this.collection.random();
 			if (rnd !== undefined) {
 				this.$('#attendee-winner').html(rnd.get('name'));
+			} else {
+				alert('All attendees have won a prize!');
 			}
 		 }
 		 
